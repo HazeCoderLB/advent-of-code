@@ -29,7 +29,7 @@ public class Day1 {
 
         // Part 1:
         for (int posNumber1 = 0; posNumber1 < inputs.size(); posNumber1++) {
-            for (int posNumber2 = posNumber1+1; posNumber2 < inputs.size(); posNumber2++) {
+            for (int posNumber2 = posNumber1 + 1; posNumber2 < inputs.size(); posNumber2++) {
 
                 int sum = inputs.get(posNumber1) + inputs.get(posNumber2);
                 if (sum == 2020) {
@@ -37,7 +37,7 @@ public class Day1 {
                     int number1 = inputs.get(posNumber1);
                     int number2 = inputs.get(posNumber2);
 
-                    int answer = number1*number2;
+                    int answer = number1 * number2;
                     System.out.println("Answer Part 1: " + answer);
                 }
 
@@ -45,9 +45,9 @@ public class Day1 {
         }
 
         // Part 2:
-        for (int posNumber1 = 0; posNumber1 < inputs.size()-1; posNumber1++) {
-            for (int posNumber2 = posNumber1+1; posNumber2 < inputs.size(); posNumber2++) {
-                for (int posNumber3 = posNumber2+1; posNumber3 < inputs.size(); posNumber3++) {
+        for (int posNumber1 = 0; posNumber1 < inputs.size() - 1; posNumber1++) {
+            for (int posNumber2 = posNumber1 + 1; posNumber2 < inputs.size(); posNumber2++) {
+                for (int posNumber3 = posNumber2 + 1; posNumber3 < inputs.size(); posNumber3++) {
 
                     int sum = inputs.get(posNumber1) + inputs.get(posNumber2) + inputs.get(posNumber3);
                     if (sum == 2020) {
@@ -56,7 +56,7 @@ public class Day1 {
                         int number2 = inputs.get(posNumber2);
                         int number3 = inputs.get(posNumber3);
 
-                        int answer = number1*number2*number3;
+                        int answer = number1 * number2 * number3;
                         System.out.println("Answer Part 2: " + answer);
                     }
 
