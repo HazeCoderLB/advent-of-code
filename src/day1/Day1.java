@@ -16,10 +16,8 @@ public class Day1 {
         try {
             File myFile = new File("src\\day1\\data.txt");
             Scanner myReader = new Scanner(myFile);
-            int i = 0;
             while (myReader.hasNextLine()) {
                 inputs.add(Integer.valueOf(myReader.nextLine()));
-                i++;
             }
             myReader.close();
         } catch (FileNotFoundException e) {
