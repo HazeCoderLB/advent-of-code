@@ -40,7 +40,7 @@ public class Day2 {
         }
 
         // Check passwords
-        int validPasswords = 0;
+        int validPasswords1 = 0;
         for (int i = 0; i < inputs.length; i++) {
             char[] password = passwords[i].toCharArray();
             int matchingChars = 0;
@@ -49,13 +49,28 @@ public class Day2 {
                     matchingChars++;
                 }
             }
-
             if (matchingChars >= minValues[i] && matchingChars <= maxValues[i]) {
-                validPasswords++;
+                validPasswords1++;
             }
         }
+        System.out.println("Part 1 - Valid Passwords: " + validPasswords1);
 
-        System.out.println("Valid Passwords: " + validPasswords);
+        // Part 2
+
+        // Check passwords
+        int validPasswords2 = 0;
+        for (int i = 0; i < inputs.length; i++) {
+            char[] password = passwords[i].toCharArray();
+            int matchingChars = 0;
+            if (password.length >= minValues[i]) {
+                if (chars[i] == password[minValues[i]-1]) matchingChars++;
+            }
+            if (password.length >= maxValues[i]) {
+                if (chars[i] == password[maxValues[i]-1]) matchingChars++;
+            }
+            if (matchingChars == 1) validPasswords2++;
+        }
+        System.out.println("Part 2 - Valid passwords: " + validPasswords2);
 
     }
 
