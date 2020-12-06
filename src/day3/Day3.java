@@ -12,21 +12,23 @@ public class Day3 {
 
     public static void main(String[] args) throws IOException {
 
+        String path = "src\\day3\\data.txt";
+
         // Get lines of data.txt
         long lineCount;
-        Path path = Path.of("src\\day3\\data.txt");
-        try (Stream<String> stream = Files.lines(path)) {
+        try (Stream<String> stream = Files.lines(Path.of(path))) {
             lineCount = stream.count();
         }
 
-        String[] inputs = new String[(int) lineCount];
+        // Initialize a String array
+        String[] lines = new String[(int) lineCount];
 
-        // Get inputs from data.txt
+        // Get every line from data.txt and store them in an array
         try {
-            File myFile = new File("src\\day3\\data.txt");
+            File myFile = new File(path);
             Scanner myReader = new Scanner(myFile);
-            for (int i = 0; i < inputs.length; i++) {
-                inputs[i] = myReader.nextLine();
+            for (int i = 0; i < lines.length; i++) {
+                lines[i] = myReader.nextLine();
             }
             myReader.close();
         } catch (FileNotFoundException e) {
@@ -34,6 +36,9 @@ public class Day3 {
             e.printStackTrace();
         }
 
+        for (String line : lines) {
+            System.out.println(line);
+        }
 
     }
 
