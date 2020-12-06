@@ -36,9 +36,27 @@ public class Day3 {
             e.printStackTrace();
         }
 
-        for (String line : lines) {
-            System.out.println(line);
+        // Get the number of encountered trees
+        char tree = '#';
+        int treeCounter = 0;
+        int lineLength = lines[0].length();
+        int horizontalPos = 0;
+        int headRight = 3;
+        int headDown = 1;
+
+        for (int i = headDown; i<lines.length; i+=headDown) {
+            if (horizontalPos < lineLength-headRight) {
+                horizontalPos += headRight;
+            } else {
+                horizontalPos = horizontalPos - lineLength + headRight;
+            }
+
+            char[] chars = lines[i].toCharArray();
+            char position = chars[horizontalPos];
+            if (position == tree) treeCounter++;
         }
+
+        System.out.println("Encountered trees: " + treeCounter);
 
     }
 
