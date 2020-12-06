@@ -41,13 +41,13 @@ public class Day3 {
         int initHorizontalPos = 0;
 
         // Part 1
-        int numOfTreesPart1 = TreeCounter.countTrees(lines, initHorizontalPos, directions[1][0], directions[1][1]);
+        int numOfTreesPart1 = Tree.countTrees(lines, initHorizontalPos, directions[1][0], directions[1][1]);
         System.out.println("Encountered trees Part 1: " + numOfTreesPart1);
 
         // Part 2
         int numOfTreesPart2[] = new int[directions.length];
         for (int i = 0; i<directions.length; i++) {
-            numOfTreesPart2[i] = TreeCounter.countTrees(lines,initHorizontalPos,directions[i][0], directions[i][1]);
+            numOfTreesPart2[i] = Tree.countTrees(lines,initHorizontalPos,directions[i][0], directions[i][1]);
         }
 
         long product = 0;

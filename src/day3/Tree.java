@@ -1,6 +1,6 @@
 package day3;
 
-public class TreeCounter {
+public class Tree {
 
     private static char tree = '#';
 
