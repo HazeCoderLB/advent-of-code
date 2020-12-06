@@ -36,7 +36,7 @@ public class Day3 {
             e.printStackTrace();
         }
 
-        // Get the number of encountered trees
+        // Get the number of encountered trees (Part 1)
         char tree = '#';
         int treeCounter = 0;
         int lineLength = lines[0].length();
@@ -51,13 +51,12 @@ public class Day3 {
                 horizontalPos = horizontalPos - lineLength + headRight;
             }
 
-            char[] chars = lines[i].toCharArray();
-            char position = chars[horizontalPos];
+            char position = lines[i].toCharArray()[horizontalPos];
+
             if (position == tree) treeCounter++;
         }
 
         System.out.println("Encountered trees: " + treeCounter);
-
     }
 
 }
