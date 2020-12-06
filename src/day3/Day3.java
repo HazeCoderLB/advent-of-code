@@ -36,27 +36,27 @@ public class Day3 {
             e.printStackTrace();
         }
 
-        // Get the number of encountered trees (Part 1)
-        char tree = '#';
-        int treeCounter = 0;
-        int lineLength = lines[0].length();
-        int horizontalPos = 0;
-        int headRight = 3;
-        int headDown = 1;
+        // Different slopes
+        int[][] directions = {{1,1},{3,1},{5,1},{7,1},{1,2}};
+        int initHorizontalPos = 0;
 
-        for (int i = headDown; i<lines.length; i+=headDown) {
-            if (horizontalPos < lineLength-headRight) {
-                horizontalPos += headRight;
-            } else {
-                horizontalPos = horizontalPos - lineLength + headRight;
-            }
+        // Part 1
+        int numOfTreesPart1 = TreeCounter.countTrees(lines, initHorizontalPos, directions[1][0], directions[1][1]);
+        System.out.println("Encountered trees Part 1: " + numOfTreesPart1);
 
-            char position = lines[i].toCharArray()[horizontalPos];
-
-            if (position == tree) treeCounter++;
+        // Part 2
+        int numOfTreesPart2[] = new int[directions.length];
+        for (int i = 0; i<directions.length; i++) {
+            numOfTreesPart2[i] = TreeCounter.countTrees(lines,initHorizontalPos,directions[i][0], directions[i][1]);
         }
 
-        System.out.println("Encountered trees: " + treeCounter);
+        long product = 0;
+        for (int i = 0; i<numOfTreesPart2.length; i++) {
+            if (i == 0) product = numOfTreesPart2[i];
+            else product *= numOfTreesPart2[i];
+        }
+
+        System.out.println("Product Part 2 = " + product);
     }
 
 }
