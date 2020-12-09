@@ -23,8 +23,8 @@ public class Day4 {
         }
 
         // Check for validation
-        int validPassports = 0;
-        Set<String> allFields = Set.of("byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid", "cid");
+        int validPassportsPart1 = 0;
+        int validPassportsPart2 = 0;
         Set<String> requiredFields = Set.of("byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid");
         for (String[] passport : passports) {
             Map<String, String> fields = new HashMap<>();
@@ -33,13 +33,48 @@ public class Day4 {
                 fields.put(keyAndValue[0], keyAndValue[1]);
             }
 
-            if (fields.keySet().equals(requiredFields) || fields.keySet().equals(allFields)) {
-                validPassports++;
+            if (fields.keySet().containsAll(requiredFields)) {
+                validPassportsPart1++;
+
+                // Part 2
+                int byr = Integer.valueOf(fields.get("byr"));
+                boolean byrValid = byr >= 1920 && byr <= 2002;
+
+                int iyr = Integer.valueOf(fields.get("iyr"));
+                boolean iyrValid = iyr >= 2010 && iyr <= 2020;
+
+                int eyr = Integer.valueOf(fields.get("eyr"));
+                boolean eyrValid = eyr >= 2020 && eyr <= 2030;
+
+                String hgt = fields.get("hgt");
+                int hgtValue = 0;
+                String hgtUnit = hgt.substring(hgt.length() - 2);
+                boolean hgtValid1 = hgt.matches("[0-9]{2,3}[a-z]{2}");
+                if (hgtValid1) hgtValue = Integer.valueOf(hgt.substring(0, hgt.length() - 2));
+                boolean hgtValid2 = false;
+                if (hgtUnit.equals("cm") && hgtValue >= 150 && hgtValue <= 193) hgtValid2 = true;
+                else if (hgtUnit.equals("in") && hgtValue >= 59 && hgtValue <= 76) hgtValid2 = true;
+                boolean hgtValid = hgtValid1 && hgtValid2;
+
+                String hcl = fields.get("hcl");
+                boolean hclValid = hcl.matches("^[#][0-9a-f]{6}$");
+
+                String ecl = fields.get("ecl");
+                boolean eclValid = ecl.matches("amb|blu|brn|gry|grn|hzl|oth");
+
+                String pid = fields.get("pid");
+                boolean pidValid = pid.matches("[0-9]{9}");
+
+                if (byrValid && iyrValid && eyrValid && hgtValid && hclValid && eclValid && pidValid) {
+                    validPassportsPart2++;
+                }
             }
+
         }
 
-        // Print answer
-        System.out.println("Valid Passwords Part 1: " + validPassports);
+        // Print answers
+        System.out.println("Valid Passports Part 1: " + validPassportsPart1);
+        System.out.println("Valid Passports Part 2: " + validPassportsPart2);
 
     }
 
